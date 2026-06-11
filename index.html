@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Melodies LLC | Hear the music. Hear the joy.</title>
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --secondary-blue: #00a8e8;
+            --dark-bg: #0a192f;
+            --light-bg: #f4f7f6;
+            --text-dark: #333;
+            --text-light: #fff;
+            --accent-green: #39ff14;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--dark-bg);
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--secondary-blue);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text h1 {
+            color: var(--text-light);
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .logo-text p {
+            color: var(--secondary-blue);
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 60%, var(--primary-blue));
+            color: var(--text-light);
+            padding: 100px 10%;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary-blue);
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #ccc;
+        }
+
+        .cta-btn {
+            background-color: var(--secondary-blue);
+            color: var(--text-light);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            background-color: #0080b0;
+        }
+
+        /* Sections General */
+        section {
+            padding: 80px 10%;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--dark-bg);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-blue);
+            margin: 10px auto 0;
+        }
+
+        /* Team Section */
+        .grid-team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .member-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-blue);
+            transition: transform 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .avatar-placeholder {
+            width: 100px;
+            height: 100px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
+            border: 2px dashed var(--secondary-blue);
+        }
+
+        .member-card h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark-bg);
+        }
+
+        .member-card p {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* What We Do */
+        .about-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-box p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        /* Process Flow */
+        .process-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .process-step {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 30px;
+            border-radius: 8px;
+            position: relative;
+            text-align: center;
+        }
+
+        .step-num {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: var(--secondary-blue);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .process-step h3 {
+            margin-top: 10px;
+            margin-bottom: 15px;
+            color: var(--secondary-blue);
+        }
+
+        /* Data Section */
+        .data-section {
+            background-color: white;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .metrics-grid { grid-template-columns: 1fr; }
+        }
+
+        .chart-mock {
+            background: #f9f9f9;
+            border: 2px dashed #ccc;
+            padding: 60px;
+            text-align: center;
+            border-radius: 8px;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Footer / Contact */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 60px 10%;
+            text-align: center;
+            border-top: 5px solid var(--secondary-blue);
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .contact-info strong {
+            color: var(--secondary-blue);
+        }
+
+        .footer-bottom {
+            font-size: 12px;
+            color: #777;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-text">
+                <h1>MONSTER MELODIES LLC</h1>
+                <p>"Hear the music. Hear the joy."</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">Who Are We</a></li>
+                <li><a href="#services">What We Do</a></li>
+                <li><a href="#process">Our Process</a></li>
+                <li><a href="#impact">Our Impact</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>The Future of Clean, Fright-Free Energy</h2>
+        <p>Founded on January 30th, 2025, at exactly 8:33 P.M., Monster Melodies LLC is changing the laugh-energy landscape forever through the pure power of premium soundtracks.</p>
+        <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView();">Partner With Us</button>
+    </section>
+
+    <section id="about">
+        <h2>Who Are We?</h2>
+        <div class="grid-team">
+            <div class="member-card">
+                <h3>Abhiram Duvvuri</h3>
+                <p>Flutist for MMLLC, Website Administrator & Advertiser</p>
+            </div>
+            <div class="member-card">
+                <h3>Dylan Sanghvi</h3>
+                <p>Public Relations Manager</p>
+            </div>
+            <div class="member-card">
+                <h3>Sanjay R. Josyula</h3>
+                <p>Clarinetist for MMLLC and Lead Commercial Production</p>
+            </div>
+            <div class="member-card">
+                <h3>Joel Owusu</h3>
+                <p>Trumpeter for MMLLC and Repertoire Manager</p>
+            </div>
+            <div class="member-card">
+                <h3>Shivansh Patel</h3>
+                <p>Marketing Officer & Accountant</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="background-color: #eee;">
+        <h2>What We Do?</h2>
+        <div class="about-box">
+            <p>Our hallmark is playing music from shows that children in our target age range absolutely love. We facilitate structured, high-energy activities like <strong>sing-alongs</strong> and <strong>freeze dancing</strong> to organically maximize child happiness.</p>
+            <p>Our research into child psychology indicates that utilizing curated audio tracks results in a <strong>drastically lower dead door rate</strong> and remarkably higher energy generation capsules relative to legacy scare methods.</p>
+        </div>
+    </section>
+
+    <section id="process">
+        <h2>How Do We Do It?</h2>
+        <div class="process-container">
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <h3>Standard Docking</h3>
+                <p>Upon entry, we deploy moderate-volume audio cues (typically from early <em>Bluey</em> episodes) to gently rouse subjects without causing structural/contact risks.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <h3>Engagement</h3>
+                <p>Subjects participate in curated movement routines, generating maximum laughter which is immediately captured and sent back to base via energy capsules.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <h3>Adherence Protocol</h3>
+                <p>At the time limit, a quickly-degrading melatonin-based amnestic aerosol ensures safe return to sleep, maintaining zero human logging footprint.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="impact" class="data-section">
+        <h2>What Has Been Done So Far?</h2>
+        <div class="metrics-grid">
+            <div>
+                <p>Our firm has successfully assembled a world-class elite crew of <strong>33 experienced monster musicians</strong>, many holding prestigious Varghameon Musical Prowess accolades.</p>
+                <br>
+                <p>Through rigorous testing, our data analysts have verified massive improvements in methodology consistency and general public support across Monsters Incorporated territories.</p>
+            </div>
+            <div>
+                <div class="chart-mock">
+                    <strong>[ Proprietary Data Visualization ]</strong><br>
+                    Projected Annual Energy Production & Decreased Dead Door Rates via Monster Melodies Intervention
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-info">
+            <p><strong>Telephone:</strong> 1-800-MMLLC</p>
+            <p><strong>Instagram:</strong> @monstermelodies.26</p>
+            <p><strong>Business Email:</strong> monstermelodiesllc@gmail.com</p>
+            <p><strong>Accreditation:</strong> Certified Partners of Monsters Incorporated</p>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Monster Melodies LLC. All rights reserved. Discretion advised under CDA regulations.
+        </div>
+    </footer>
+
+</body>
+</html>
